@@ -1,2 +1,19 @@
 
-this is test file
+---
+- name: test localhost
+  hosts: all
+  connection: local
+  tasks:
+    - name: task 1
+      ansible.builtin.command:
+        cmd: mkdir  /var/lib/awx/HashiVault/ValidateTrade/token/Dev/ -p 
+      delegate_to: localhost
+
+    - name: task 2
+      ansible.builtin.command:  
+        cmd: touch /var/lib/awx/HashiVault/ValidateTrade/token/Dev/token.json
+      delegate_to: localhost
+
+    - name: task 3
+      shell: echo Amar > /var/lib/awx/HashiVault/ValidateTrade/token/Dev/token.json
+      delegate_to: localhost
